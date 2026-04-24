@@ -1,0 +1,244 @@
+.booking-confirmation-page {
+  padding-top: 100px;
+  padding-bottom: 4rem;
+  min-height: 100vh;
+}
+
+.confirmation-header {
+  margin-bottom: 4rem;
+}
+
+.success-icon {
+  color: #10B981;
+  margin-bottom: 1rem;
+}
+
+.confirmation-header h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.confirmation-header p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* Print styles will hide everything except tickets */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .tickets-container, .tickets-container * {
+    visibility: visible;
+  }
+  .tickets-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+  .ticket-card {
+    page-break-inside: avoid;
+    margin-bottom: 2rem !important;
+    box-shadow: none !important;
+    border: 2px solid #ddd !important;
+  }
+}
+
+.tickets-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.ticket-card {
+  display: flex;
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  position: relative;
+  border: 1px solid var(--border);
+}
+
+.ticket-left {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.ticket-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.ticket-event-info h2 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.te-detail {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.ticket-participant-info {
+  margin-top: auto;
+  display: flex;
+  gap: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px dashed var(--border);
+}
+
+.info-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-block .label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+  margin-bottom: 0.25rem;
+}
+
+.info-block .value {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+}
+
+.ticket-divider {
+  width: 2px;
+  background-image: linear-gradient(to bottom, var(--border) 50%, transparent 50%);
+  background-size: 2px 15px;
+  position: relative;
+}
+
+.ticket-divider::before, .ticket-divider::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: var(--bg);
+  border-radius: 50%;
+  left: -15px;
+  border: 1px solid var(--border);
+}
+
+.ticket-divider::before {
+  top: -15px;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  transform: rotate(45deg);
+}
+
+.ticket-divider::after {
+  bottom: -15px;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+  transform: rotate(45deg);
+}
+
+.ticket-right {
+  width: 250px;
+  background: var(--surface-hover);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.qr-container {
+  background: white;
+  padding: 0.5rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.qr-container img {
+  width: 150px;
+  height: 150px;
+  display: block;
+}
+
+.ticket-id {
+  font-family: monospace;
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.scan-text {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+  .ticket-card {
+    flex-direction: column;
+  }
+  
+  .ticket-divider {
+    height: 2px;
+    width: 100%;
+    background-image: linear-gradient(to right, var(--border) 50%, transparent 50%);
+    background-size: 15px 2px;
+  }
+  
+  .ticket-divider::before, .ticket-divider::after {
+    left: auto;
+    width: 30px;
+    height: 30px;
+  }
+  
+  .ticket-divider::before {
+    left: -15px;
+    top: -15px;
+    transform: rotate(-45deg);
+  }
+  
+  .ticket-divider::after {
+    right: -15px;
+    top: -15px;
+    transform: rotate(135deg);
+  }
+  
+  .ticket-right {
+    width: 100%;
+    padding: 1.5rem;
+  }
+  
+  .ticket-participant-info {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
